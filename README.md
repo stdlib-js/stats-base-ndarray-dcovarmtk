@@ -306,10 +306,6 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-base-ndarray-dcovarmtk/main/LICENSE
 
-</section>
-
-<!-- /.links -->
-
 [covariance]: https://en.wikipedia.org/wiki/Covariance
 
 </section>
