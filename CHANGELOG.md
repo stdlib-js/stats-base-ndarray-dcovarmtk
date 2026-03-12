@@ -2,6 +2,40 @@
 
 > Package changelog.
 
+<section class="release" id="unreleased">
+
+## Unreleased (2026-03-12)
+
+<section class="commits">
+
+### Commits
+
+<details>
+
+-   [`dd90aad`](https://github.com/stdlib-js/stdlib/commit/dd90aade754af928c74c03c4099d1d4307648713) - **bench:** use string interpolation in `stats/base/ndarray/dcovarmtk` [(#10875)](https://github.com/stdlib-js/stdlib/pull/10875) _(by Om-A-osc)_
+
+</details>
+
+</section>
+
+<!-- /.commits -->
+
+<section class="contributors">
+
+### Contributors
+
+A total of 1 person contributed to this release. Thank you to this contributor:
+
+-   Om-A-osc
+
+</section>
+
+<!-- /.contributors -->
+
+</section>
+
+<!-- /.release -->
+
 <section class="release" id="v0.1.1">
 
 ## 0.1.1 (2026-02-08)
