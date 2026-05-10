@@ -103,38 +103,32 @@ The use of the term `n-1` is commonly referred to as Bessel's correction. Depend
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-ndarray-dcovarmtk
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-dcovarmtk = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dcovarmtk@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var dcovarmtk = require( 'path/to/vendor/umd/stats-base-ndarray-dcovarmtk/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dcovarmtk@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.dcovarmtk;
-})();
-</script>
+var dcovarmtk = require( '@stdlib/stats-base-ndarray-dcovarmtk' );
 ```
 
 #### dcovarmtk( arrays )
@@ -142,19 +136,15 @@ If no recognized module system is present, access bundle contents via the global
 Computes the covariance of two one-dimensional double-precision floating-point ndarrays provided known means and using a one-pass textbook algorithm.
 
 ```javascript
-var Float64Array = require( '@stdlib/array-float64' );
+var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
 var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-var ndarray = require( '@stdlib/ndarray-base-ctor' );
 
 var opts = {
     'dtype': 'float64'
 };
 
-var xbuf = new Float64Array( [ 1.0, -2.0, 2.0 ] );
-var x = new ndarray( opts.dtype, xbuf, [ 3 ], [ 1 ], 0, 'row-major' );
-
-var ybuf = new Float64Array( [ 2.0, -2.0, 1.0 ] );
-var y = new ndarray( opts.dtype, ybuf, [ 3 ], [ 1 ], 0, 'row-major' );
+var x = new Float64Vector( [ 1.0, -2.0, 2.0 ] );
+var y = new Float64Vector( [ 2.0, -2.0, 1.0 ] );
 
 var correction = scalar2ndarray( 1.0, opts );
 var meanx = scalar2ndarray( 1.0/3.0, opts );
@@ -166,13 +156,13 @@ var v = dcovarmtk( [ x, y, correction, meanx, meany ] );
 
 The function has the following parameters:
 
--   **arrays**: array-like object containing the following ndarrays in order:
+-   **arrays**: array-like object containing the following ndarrays:
 
-    1.  first one-dimensional input ndarray.
-    2.  second one-dimensional input ndarray.
-    3.  a zero-dimensional ndarray specifying the degrees of freedom adjustment. Setting this parameter to a value other than `0` has the effect of adjusting the divisor during the calculation of the [covariance][covariance] according to `N-c` where `c` corresponds to the provided degrees of freedom adjustment and `N` corresponds to the number of elements in each input ndarray. When computing the population [covariance][covariance], setting this parameter to `0` is the standard choice (i.e., the provided arrays contain data constituting entire populations). When computing the unbiased sample [covariance][covariance], setting this parameter to `1` is the standard choice (i.e., the provided arrays contain data sampled from larger populations; this is commonly referred to as Bessel's correction).
-    4.  a zero-dimensional ndarray specifying the mean of the first one-dimensional ndarray.
-    5.  a zero-dimensional ndarray specifying the mean of the second one-dimensional ndarray.
+    -   first one-dimensional input ndarray.
+    -   second one-dimensional input ndarray.
+    -   a zero-dimensional ndarray specifying the degrees of freedom adjustment. Setting this parameter to a value other than `0` has the effect of adjusting the divisor during the calculation of the [covariance][covariance] according to `N-c` where `c` corresponds to the provided degrees of freedom adjustment and `N` corresponds to the number of elements in each input ndarray. When computing the population [covariance][covariance], setting this parameter to `0` is the standard choice (i.e., the provided arrays contain data constituting entire populations). When computing the unbiased sample [covariance][covariance], setting this parameter to `1` is the standard choice (i.e., the provided arrays contain data sampled from larger populations; this is commonly referred to as Bessel's correction).
+    -   a zero-dimensional ndarray specifying the mean of the first one-dimensional ndarray.
+    -   a zero-dimensional ndarray specifying the mean of the second one-dimensional ndarray.
 
 </section>
 
@@ -195,17 +185,11 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-base-ctor@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-dcovarmtk@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-discrete-uniform' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var dcovarmtk = require( '@stdlib/stats-base-ndarray-dcovarmtk' );
 
 // Define array options:
 var opts = {
@@ -213,12 +197,10 @@ var opts = {
 };
 
 // Create one-dimensional ndarrays containing pseudorandom numbers:
-var xbuf = discreteUniform( 10, -50, 50, opts );
-var x = new ndarray( opts.dtype, xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
+var x = discreteUniform( [ 10 ], -50, 50, opts );
 console.log( ndarray2array( x ) );
 
-var ybuf = discreteUniform( 10, -50, 50, opts );
-var y = new ndarray( opts.dtype, ybuf, [ ybuf.length ], [ 1 ], 0, 'row-major' );
+var y = discreteUniform( [ 10 ], -50, 50, opts );
 console.log( ndarray2array( y ) );
 
 // Specify the degrees of freedom adjustment:
@@ -231,11 +213,6 @@ var meany = scalar2ndarray( 0.0, opts );
 // Calculate the sample covariance:
 var v = dcovarmtk( [ x, y, correction, meanx, meany ] );
 console.log( v );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
