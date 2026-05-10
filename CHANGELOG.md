@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2026-04-02)
+## Unreleased (2026-05-10)
 
 <section class="commits">
 
@@ -12,6 +12,8 @@
 
 <details>
 
+-   [`c1e9c60`](https://github.com/stdlib-js/stdlib/commit/c1e9c607632187acb89eff6bf4f6021b77ed4ec5) - **docs:** update copy _(by Athan Reines)_
+-   [`0e0ce70`](https://github.com/stdlib-js/stdlib/commit/0e0ce70e130c62b90f7d1de555133eacfa1b77eb) - **chore:** modernize examples and benchmarks _(by Athan Reines)_
 -   [`dd90aad`](https://github.com/stdlib-js/stdlib/commit/dd90aade754af928c74c03c4099d1d4307648713) - **bench:** use string interpolation in `stats/base/ndarray/dcovarmtk` [(#10875)](https://github.com/stdlib-js/stdlib/pull/10875) _(by Om-A-osc)_
 
 </details>
@@ -24,8 +26,9 @@
 
 ### Contributors
 
-A total of 1 person contributed to this release. Thank you to this contributor:
+A total of 2 people contributed to this release. Thank you to the following contributors:
 
+-   Athan Reines
 -   Om-A-osc
 
 </section>
